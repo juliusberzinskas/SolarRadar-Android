@@ -1,0 +1,75 @@
+# ============================================================
+# Android
+# ============================================================
+
+# Built application files
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+release/
+
+# Gradle files
+.gradle/
+build/
+/captures/
+
+# Local configuration — never commit
+local.properties
+
+# Signing / keystore files — NEVER commit these
+*.jks
+*.keystore
+keystore.properties
+release-key*
+
+# ============================================================
+# Firebase — contains API keys and project credentials
+# ============================================================
+google-services.json
+
+# ============================================================
+# Android Studio / IntelliJ IDEA
+# ============================================================
+*.iml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/.gitignore
+
+# ============================================================
+# Kotlin
+# ============================================================
+*.kotlin_module
+.kotlin/
+
+# ============================================================
+# Native build
+# ============================================================
+.externalNativeBuild/
+.cxx/
+
+# ============================================================
+# OS files
+# ============================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================================
+# Internal project documentation (Claude context files)
+# ============================================================
+design
+information
+database firestore
