@@ -65,6 +65,7 @@ fun JobListScreen(
                     viewModel.profile?.let { profile ->
                         TopBarAvatar(
                             displayName = profile.displayName,
+                            photoUrl = profile.photoUrl,
                             modifier = Modifier.padding(end = 4.dp)
                         )
                     }

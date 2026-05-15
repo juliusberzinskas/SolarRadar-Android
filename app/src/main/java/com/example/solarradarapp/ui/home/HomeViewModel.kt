@@ -30,7 +30,8 @@ class HomeViewModel : ViewModel() {
                     role = doc.getString("role") ?: "",
                     active = doc.getBoolean("active") ?: false,
                     memberId = doc.getString("memberId") ?: "",
-                    expertise = (doc.get("expertise") as? List<*>)?.filterIsInstance<String>() ?: emptyList()
+                    expertise = (doc.get("expertise") as? List<*>)?.filterIsInstance<String>() ?: emptyList(),
+                    photoUrl = doc.getString("photoUrl"),
                 )
                 isLoading = false
             }

@@ -6,5 +6,6 @@ data class TechnicianProfile(
     val role: String = "",
     val active: Boolean = false,
     val memberId: String = "",
-    val expertise: List<String> = emptyList()
+    val expertise: List<String> = emptyList(),
+    val photoUrl: String? = null,
 )

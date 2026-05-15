@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -16,12 +15,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.solarradarapp.ui.components.TopBarAvatar
 import com.example.solarradarapp.ui.strings.LocalAppStrings
 import com.example.solarradarapp.ui.theme.*
 
@@ -85,24 +84,12 @@ fun HomeScreen(
                                 modifier = Modifier.fillMaxWidth().padding(24.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                Surface(
-                                    modifier = Modifier.size(72.dp),
-                                    shape = CircleShape,
-                                    color = colors.primaryBlue
-                                ) {
-                                    Box(contentAlignment = Alignment.Center) {
-                                        Text(
-                                            text = profile.displayName
-                                                .split(" ")
-                                                .mapNotNull { it.firstOrNull()?.toString() }
-                                                .take(2)
-                                                .joinToString(""),
-                                            fontSize = 24.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            color = Color.White
-                                        )
-                                    }
-                                }
+                                TopBarAvatar(
+                                    displayName = profile.displayName,
+                                    photoUrl = profile.photoUrl,
+                                    size = 72.dp,
+                                    fontSize = 24.sp,
+                                )
                                 Spacer(modifier = Modifier.height(14.dp))
                                 Text(
                                     profile.displayName,

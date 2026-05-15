@@ -50,7 +50,8 @@ class JobListViewModel : ViewModel() {
                     role = role,
                     active = active,
                     memberId = doc.getString("memberId") ?: "",
-                    expertise = (doc.get("expertise") as? List<*>)?.filterIsInstance<String>() ?: emptyList()
+                    expertise = (doc.get("expertise") as? List<*>)?.filterIsInstance<String>() ?: emptyList(),
+                    photoUrl = doc.getString("photoUrl"),
                 )
                 loadJobs(uid)
             }
