@@ -4,6 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.solarradarapp.util.NotificationHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -40,6 +41,7 @@ class LoginViewModel : ViewModel() {
                     loginError = LoginError.ACCESS_DENIED
                     isLoading = false
                 } else {
+                    NotificationHelper.registerToken(uid)
                     isLoading = false
                     loginSuccess = true
                 }
