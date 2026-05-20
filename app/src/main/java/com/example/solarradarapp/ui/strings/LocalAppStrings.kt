@@ -77,6 +77,18 @@ val EnglishStrings = AppStrings(
     address = "Address",
     jobAttachments = "Job Attachments",
     openInMaps = "Open in Maps",
+    tabJobInfo = "Job Info",
+    tabMounting = "Mounting",
+    tabPictures = "Pictures",
+    panelType = "Panel Type",
+    panelCount = "Panel Count",
+    inverterModel = "Inverter Model",
+    mountingType = "Mounting Type",
+    installationDate = "Installation Date",
+    noMountingInfo = "No mounting information available",
+    noPictures = "Empty",
+    mountingTypeRoof = "Roof mount",
+    mountingTypeGround = "Ground mount",
 )
 
 val LithuanianStrings = AppStrings(
@@ -154,6 +166,18 @@ val LithuanianStrings = AppStrings(
     address = "Adresas",
     jobAttachments = "Darbo priedai",
     openInMaps = "Atidaryti žemėlapyje",
+    tabJobInfo = "Darbo info",
+    tabMounting = "Montavimas",
+    tabPictures = "Nuotraukos",
+    panelType = "Skydelių tipas",
+    panelCount = "Skydelių skaičius",
+    inverterModel = "Inverterio modelis",
+    mountingType = "Montavimo tipas",
+    installationDate = "Montavimo data",
+    noMountingInfo = "Montavimo informacija nepateikta",
+    noPictures = "Tuščia",
+    mountingTypeRoof = "Stogo montavimas",
+    mountingTypeGround = "Žemės montavimas",
 )
 
 val LocalAppStrings = compositionLocalOf<AppStrings> { EnglishStrings }

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.solarradarapp.model.Job
 import com.example.solarradarapp.model.JobStatus
 import com.example.solarradarapp.model.Report
+import com.example.solarradarapp.model.SiteMounting
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -26,6 +27,7 @@ class JobDetailViewModel(private val firestoreId: String) : ViewModel() {
 
     var siteAddress by mutableStateOf<String?>(null)
     var siteLocation by mutableStateOf<Pair<Double, Double>?>(null)
+    var siteMounting by mutableStateOf<SiteMounting?>(null)
     var jobAttachmentUrls by mutableStateOf<List<String>>(emptyList())
     var isLoadingAttachments by mutableStateOf(false)
 
@@ -80,6 +82,17 @@ class JobDetailViewModel(private val firestoreId: String) : ViewModel() {
                 val lat = loc?.get("lat") as? Double
                 val lng = loc?.get("lng") as? Double
                 if (lat != null && lng != null) siteLocation = Pair(lat, lng)
+
+                val m = doc.get("mounting") as? Map<*, *>
+                if (m != null) {
+                    siteMounting = SiteMounting(
+                        panelType = m["panelType"] as? String,
+                        panelCount = (m["panelCount"] as? Long)?.toInt(),
+                        inverterModel = m["inverterModel"] as? String,
+                        mountingType = m["mountingType"] as? String,
+                        installationDate = m["installationDate"] as? String
+                    )
+                }
             }
     }
 

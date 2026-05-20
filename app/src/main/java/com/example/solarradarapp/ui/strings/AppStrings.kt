@@ -104,6 +104,22 @@ data class AppStrings(
     val address: String,
     val jobAttachments: String,
     val openInMaps: String,
+
+    // Job detail tabs
+    val tabJobInfo: String,
+    val tabMounting: String,
+    val tabPictures: String,
+
+    // Mounting system
+    val panelType: String,
+    val panelCount: String,
+    val inverterModel: String,
+    val mountingType: String,
+    val installationDate: String,
+    val noMountingInfo: String,
+    val noPictures: String,
+    val mountingTypeRoof: String,
+    val mountingTypeGround: String,
 ) {
     fun jobStatusLabel(status: String) = when (status) {
         "open" -> statusOpen
@@ -132,6 +148,12 @@ data class AppStrings(
         days < 0 -> overdue
         days == 0L -> dueToday
         else -> "$days $daysLeft"
+    }
+
+    fun mountingTypeLabel(value: String?) = when (value) {
+        "Stogo" -> mountingTypeRoof
+        "Žemės" -> mountingTypeGround
+        else -> value ?: "—"
     }
 
     fun expertiseLabel(key: String) = when (key) {
