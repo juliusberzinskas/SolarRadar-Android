@@ -1,6 +1,11 @@
 package com.example.solarradarapp.ui.jobs
 
 import android.content.Intent
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -16,6 +21,7 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -29,6 +35,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import org.osmdroid.config.Configuration
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
+import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.MapView
+import org.osmdroid.views.overlay.Marker
 import com.example.solarradarapp.model.JobStatus
 import com.example.solarradarapp.model.Report
 import com.example.solarradarapp.ui.components.JobStatusChip
@@ -227,6 +238,11 @@ fun JobDetailScreen(
                                     }
                                 }
                             }
+                        }
+
+                        // Site map — shown only when admin has placed an exact marker
+                        viewModel.siteLocation?.let { (lat, lng) ->
+                            SiteMapCard(lat = lat, lng = lng)
                         }
 
                         viewModel.errorMessage?.let {
@@ -449,6 +465,62 @@ private fun AddressDetailRow(label: String, address: String, onClick: () -> Unit
             )
         }
     }
+}
+
+@Composable
+private fun SiteMapCard(lat: Double, lng: Double) {
+    val colors = LocalAppColors.current
+    val context = LocalContext.current
+
+    Card(
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = colors.backgroundCard),
+        elevation = CardDefaults.cardElevation(0.dp),
+        border = BorderStroke(1.dp, colors.divider),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        AndroidView(
+            factory = { ctx ->
+                Configuration.getInstance().userAgentValue = "SolarRadar/1.0"
+                MapView(ctx).apply {
+                    setTileSource(TileSourceFactory.MAPNIK)
+                    setMultiTouchControls(true)
+                    controller.setZoom(17.0)
+                    val geoPoint = GeoPoint(lat, lng)
+                    controller.setCenter(geoPoint)
+                    val marker = Marker(this)
+                    marker.position = geoPoint
+                    marker.icon = createOrangeMarkerIcon(ctx)
+                    marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_CENTER)
+                    marker.title = null
+                    overlays.add(marker)
+                }
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(220.dp)
+        )
+    }
+}
+
+private fun createOrangeMarkerIcon(context: Context): BitmapDrawable {
+    val density = context.resources.displayMetrics.density
+    val px = (36 * density).toInt()
+    val bitmap = Bitmap.createBitmap(px, px, Bitmap.Config.ARGB_8888)
+    val canvas = Canvas(bitmap)
+    val fill = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = android.graphics.Color.parseColor("#f97316")
+        style = Paint.Style.FILL
+    }
+    val stroke = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = android.graphics.Color.WHITE
+        style = Paint.Style.STROKE
+        strokeWidth = px * 0.10f
+    }
+    val r = px / 2f - stroke.strokeWidth
+    canvas.drawCircle(px / 2f, px / 2f, r, fill)
+    canvas.drawCircle(px / 2f, px / 2f, r, stroke)
+    return BitmapDrawable(context.resources, bitmap)
 }
 
 @Composable

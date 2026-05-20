@@ -25,6 +25,7 @@ class JobDetailViewModel(private val firestoreId: String) : ViewModel() {
     var isLoadingReport by mutableStateOf(false)
 
     var siteAddress by mutableStateOf<String?>(null)
+    var siteLocation by mutableStateOf<Pair<Double, Double>?>(null)
     var jobAttachmentUrls by mutableStateOf<List<String>>(emptyList())
     var isLoadingAttachments by mutableStateOf(false)
 
@@ -74,6 +75,11 @@ class JobDetailViewModel(private val firestoreId: String) : ViewModel() {
             .addOnSuccessListener { doc ->
                 val addr = doc.getString("address")
                 if (!addr.isNullOrBlank()) siteAddress = addr
+
+                val loc = doc.get("location") as? Map<*, *>
+                val lat = loc?.get("lat") as? Double
+                val lng = loc?.get("lng") as? Double
+                if (lat != null && lng != null) siteLocation = Pair(lat, lng)
             }
     }
 
