@@ -76,7 +76,7 @@ Firestore security rules — not just app-side filtering — enforce that a tech
   <img src="docs/screenshots/profile.jpg" width="260" alt="Profile">
   <img src="docs/screenshots/appjobs.jpg" width="260" alt="Jobs">
   <img src="docs/screenshots/startjob.jpg" width="260" alt="Start Job">
-  <img src="docs/screenshots/sumbitreport.jpg" width="260" alt="Report">
+  <img src="docs/screenshots/submitreport.jpg" width="260" alt="Report">
   <img src="docs/screenshots/settings.jpg" width="260" alt="Settings">
 </p>
 
