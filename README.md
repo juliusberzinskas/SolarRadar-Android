@@ -73,9 +73,9 @@ Firestore security rules — not just app-side filtering — enforce that a tech
 ## Screenshots
 
 ### Dashboard                             ### Profile                                    ### Jobs
-![Dashboard](docs/screenshots/main.png)   ![Profile](docs/screenshots/profile.png)     ![Jobs](docs/screenshots/appjobs.png)
+![Dashboard](docs/screenshots/main.jpg)   ![Profile](docs/screenshots/profile.jpg)     ![Jobs](docs/screenshots/appjobs.jpg)
 ### Start Job                             ### Submit Report                              ### Settings
-![Start](docs/screenshots/startjob.png)  ![Submit](docs/screenshots/sumbitreport.png)    ![Settings](docs/screenshots/settings.png)
+![Start](docs/screenshots/startjob.jpg)  ![Submit](docs/screenshots/sumbitreport.jpg)    ![Settings](docs/screenshots/settings.jpg)
 
 Requirements: Android Studio, JDK 17, a Firebase project with Authentication, Firestore and Storage enabled.
 
