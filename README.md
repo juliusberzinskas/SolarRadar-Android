@@ -71,11 +71,14 @@ Storage	Uploads report photos
 Firestore security rules — not just app-side filtering — enforce that a technician can only read their own assigned jobs.
 
 ## Screenshots
-
-### Dashboard                             ### Profile                                    ### Jobs
-![Dashboard](docs/screenshots/main.jpg)   ![Profile](docs/screenshots/profile.jpg)     ![Jobs](docs/screenshots/appjobs.jpg)
-### Start Job                             ### Submit Report                              ### Settings
-![Start](docs/screenshots/startjob.jpg)  ![Submit](docs/screenshots/sumbitreport.jpg)    ![Settings](docs/screenshots/settings.jpg)
+<p>
+  <img src="docs/screenshots/main.jpg" width="260" alt="Main Page">
+  <img src="docs/screenshots/profile.jpg" width="260" alt="Profile">
+  <img src="docs/screenshots/appjobs.jpg" width="260" alt="Jobs">
+  <img src="docs/screenshots/startjob.jpg" width="260" alt="Start Job">
+  <img src="docs/screenshots/sumbitreport.jpg" width="260" alt="Report">
+  <img src="docs/screenshots/settings.jpg" width="260" alt="Settings">
+</p>
 
 Requirements: Android Studio, JDK 17, a Firebase project with Authentication, Firestore and Storage enabled.
 
