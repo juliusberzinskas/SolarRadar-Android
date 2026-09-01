@@ -122,7 +122,6 @@ Related
 SolarRadar-Web — the administration panel
 
 # Author
-
 Julius Beržinskas
 
 Eight years in solar construction in Sweden — installation, site supervision and quality inspection — before building this. The subject was not chosen at random: I spent years on the other side of it, logging faults and watching information get lost between the site and the office.
